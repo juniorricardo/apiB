@@ -15,7 +15,7 @@ namespace apiB.Service
         HttpClient _client;
         public WeatherService()
         {
-            this._client = new HttpClient();
+            _client = new HttpClient();
         }
 
         public async Task<WeatherPOJO> GetWeather(string inCity)
@@ -43,6 +43,7 @@ namespace apiB.Service
             requestUri += $"?q={inCity}";
             requestUri += "&units=imperial"; // or units=metric
             requestUri += $"&APPID={ConnectionApiOpenWeather.OpenWeatherMapAPIKey}";
+
             return requestUri;
         }
     }

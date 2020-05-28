@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using apiB.Service;
+using Newtonsoft.Json;
+using apiB.Entities;
 
 namespace apiB.Controllers
 {
@@ -12,39 +14,14 @@ namespace apiB.Controllers
     [ApiController]
     public class WeatherController : ControllerBase
     {
-        // GET: api/Weather
-        [HttpGet]
-        public Task<Entities.WeatherPOJO> Get()
+        // GET: api/Weather/city
+        [HttpGet("{city}", Name = "Get")]
+        public ActionResult Get(string city)
         {
             WeatherService weatherService = new WeatherService();
-            var data = weatherService.GetWeather("London");
+            var data = weatherService.GetWeather(city);
 
-            return data;
-        }
-
-        // GET: api/Weather/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST: api/Weather
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT: api/Weather/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            return Ok(data.Result);
         }
     }
 }
