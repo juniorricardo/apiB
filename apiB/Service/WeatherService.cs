@@ -41,7 +41,7 @@ namespace apiB.Service
         {
             string requestUri = ConnectionApiOpenWeather.OpenWeatherMapEndpoint;
             requestUri += $"?q={inCity}";
-            requestUri += "&units=imperial"; // or units=metric
+            requestUri += "&units=metric"; // or units=imperial
             requestUri += $"&APPID={ConnectionApiOpenWeather.OpenWeatherMapAPIKey}";
 
             return requestUri;
