@@ -12,7 +12,7 @@ namespace apiB.Service
 {
     public class WeatherService
     {
-        HttpClient _client;
+        private readonly HttpClient _client;
         public WeatherService()
         {
             _client = new HttpClient();
